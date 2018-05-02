@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/perfil_img"
             android:layout_centerHorizontal="true"
+            android:onClick="editar"
             app:srcCompat="@android:drawable/ic_menu_edit" />
 
     </LinearLayout>

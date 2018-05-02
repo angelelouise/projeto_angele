@@ -11,11 +11,44 @@
 
         <activity android:name= ".MainActivity">
             <intent-filter>
+                <action android:name="android.intent.action.CANVAS" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name= ".LoginActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name= ".EditActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name= ".SenhaActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SENHA" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name= ".PerfilActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.PERFIL" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
 
     </application>
 

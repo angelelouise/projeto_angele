@@ -24,7 +24,8 @@
             android:layout_height="30dp"
             android:layout_below="@+id/edit_img"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:onClick="trocar_foto"/>
 
     </RelativeLayout>
 
@@ -47,7 +48,8 @@
             android:id="@+id/change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trocar Senha" />
+            android:text="Trocar Senha"
+            android:onClick="trocar_senha"/>
 
         <EditText
             android:id="@+id/edit_nome"
@@ -88,7 +90,8 @@
                 android:layout_alignBottom="@+id/cancel"
                 android:layout_marginEnd="54dp"
                 android:layout_toStartOf="@+id/cancel"
-                android:text="Salvar" />
+                android:text="Salvar"
+                android:onClick="salvar"/>
 
             <Button
                 android:id="@+id/cancel"
@@ -97,7 +100,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="72dp"
-                android:text="Cancelar" />
+                android:text="Cancelar"
+                android:onClick="cancelar"/>
         </RelativeLayout>
 
     </LinearLayout>

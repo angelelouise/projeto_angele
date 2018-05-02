@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#424242"
+        android:fadingEdge="none|horizontal|vertical">
+
+        <EditText
+            android:id="@+id/nova_senha2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/nova_senha1"
+            android:layout_marginTop="36dp"
+            android:ems="10"
+            android:hint="Repita a nova senha:"
+            android:inputType="textPassword"
+            android:textColor="#FAFAFA"
+            android:textColorHint="#FAFAFA" />
+
+        <Button
+            android:id="@+id/senha_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/nova_senha2"
+            android:layout_below="@+id/nova_senha2"
+            android:layout_marginTop="48dp"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/senha_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/senha_cancel"
+            android:layout_alignBottom="@+id/senha_cancel"
+            android:layout_alignStart="@+id/nova_senha2"
+            android:text="Salvar" />
+
+        <EditText
+            android:id="@+id/nova_senha1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/senha_antiga"
+            android:layout_marginTop="38dp"
+            android:ems="10"
+            android:hint="Nova senha:"
+            android:inputType="textPassword"
+            android:textColor="#FAFAFA"
+            android:textColorHint="#FAFAFA" />
+
+        <EditText
+            android:id="@+id/senha_antiga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Senha antiga:"
+            android:inputType="textPassword"
+            android:textColor="#FAFAFA"
+            android:textColorHint="#FAFAFA" />
+    </RelativeLayout>
+
+</RelativeLayout>
