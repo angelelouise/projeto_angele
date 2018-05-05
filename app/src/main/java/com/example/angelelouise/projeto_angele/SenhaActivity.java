@@ -3,6 +3,7 @@ package com.example.angelelouise.projeto_angele;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,9 @@ public class SenhaActivity extends Activity{
         senha_antiga = findViewById(R.id.senha_antiga);
         nova_senha1 = findViewById(R.id.nova_senha1);
         nova_senha2 = findViewById(R.id.nova_senha2);
+
+        Intent intent = getIntent();
+        usuario_principal = (Usuario) intent.getExtras().get(Usuario.USUARIO_INFO);
     }
 
     public void salvar_senha(View v){
