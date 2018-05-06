@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,6 +71,17 @@ public class MainActivity extends Activity {
         descricao.setText(usuario_principal.getDescricao());
 
         setImage(perfil);
+        canvas1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Bitmap imagemselecionada = canvas.get(i);
+
+                Intent intent = new Intent(MainActivity.this, PreviewCanvas.class);
+                intent.putExtra( "imagem", imagemselecionada);
+                startActivity(intent);
+
+            }
+        });
 
     }
     protected void onSaveInstanceState (Bundle outState ){
@@ -151,7 +163,8 @@ public class MainActivity extends Activity {
 
                 filename = new File(folder,"app/image"+n+".jpg");
                 filename.getParentFile().mkdirs();
-
+                filename.createNewFile();
+                
                 FileOutputStream out = new FileOutputStream(filename);
 
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 90, out);
