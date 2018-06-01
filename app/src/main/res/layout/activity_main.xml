@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#424242"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#424242">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,45 +24,82 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_weight="1"
-                android:adjustViewBounds="true"
                 android:cropToPadding="false"
                 app:srcCompat="@mipmap/ic_launcher_round" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#424242"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nome"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="11dp"
                 android:layout_weight="1"
-                android:text="Nome" />
+                android:text="Nome"
+                android:textColor="#fafafa" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nome"
+                android:layout_centerVertical="true"
                 android:layout_weight="1"
-                android:text="email" />
+                android:text="email"
+                android:textColor="#fafafa" />
 
             <TextView
                 android:id="@+id/descricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nome"
+                android:layout_below="@+id/nome"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="Sobre mim..." />
-        </LinearLayout>
+                android:text="Sobre mim..."
+                android:textColor="#fafafa" />
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/canvas"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#424242"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/tirar_fotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#405040"
+            android:onClick="tirar_foto"
+            android:text="Nova foto"
+            android:textColor="#fafafa" />
+
+        <GridView
+            android:id="@+id/canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#424242"
+            android:columnWidth="90dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp">
+
+        </GridView>
+    </LinearLayout>
 
 </LinearLayout>

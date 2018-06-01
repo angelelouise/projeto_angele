@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 
 public class Usuario implements Serializable {
+    public static final String USUARIO_INFO = "USUARIO_INFO";
     private String login;
     private String senha;
     private String email;

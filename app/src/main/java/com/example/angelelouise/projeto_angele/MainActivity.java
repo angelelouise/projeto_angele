@@ -164,7 +164,7 @@ public class MainActivity extends Activity {
                 filename = new File(folder,"app/image"+n+".jpg");
                 filename.getParentFile().mkdirs();
                 filename.createNewFile();
-                
+
                 FileOutputStream out = new FileOutputStream(filename);
 
                 bitmapImage.compress(Bitmap.CompressFormat.JPEG, 90, out);

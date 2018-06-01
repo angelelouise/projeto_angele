@@ -44,4 +44,14 @@
         android:textColor="#FAFAFA"
         android:textColorHint="#FAFAFA" />
 
+    <Button
+        android:id="@+id/logar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/in_user"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:text="Entrar"
+        android:onClick="logar"/>
+
 </RelativeLayout>

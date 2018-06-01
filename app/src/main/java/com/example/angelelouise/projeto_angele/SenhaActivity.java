@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 /**
  * Created by AngeleLouise on 01/05/2018.
+ * IMPLEMENTAÇÃO INCOMPLETA
  */
 
 public class SenhaActivity extends Activity{
@@ -35,11 +36,15 @@ public class SenhaActivity extends Activity{
     public void salvar_senha(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setMessage("O tweet será atualizado, deseja prosseguir?").setCancelable(false)
+        builder.setMessage("A senha será atualizada, deseja prosseguir?").setCancelable(false)
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         validar_senhas();
+                        final Intent resultado = new Intent();
+                        resultado.putExtra(Usuario.USUARIO_INFO, usuario_principal);
+                        setResult(RESULT_OK, resultado);
+
                         finish();
                     }
                 }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
