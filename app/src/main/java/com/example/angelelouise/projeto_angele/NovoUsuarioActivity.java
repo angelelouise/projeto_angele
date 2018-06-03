@@ -13,6 +13,7 @@ import com.example.angelelouise.projeto_angele.api.UsuarioService;
 import com.example.angelelouise.projeto_angele.dominio.Usuario;
 
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,26 +45,45 @@ public class NovoUsuarioActivity extends Activity{
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        UsuarioService service = retrofit.create(UsuarioService.class);
+        final UsuarioService service = retrofit.create(UsuarioService.class);
 
-        Call<Usuario> callUsuario = service.inserir(u);
-
-        callUsuario.enqueue(new Callback<Usuario>() {
+        final Call<List<Usuario>> listaUsuarios = service.listar();
+        listaUsuarios.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Usuario Usuario = response.body();
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.body().toString().equals(u.getLogin()) || response.body().toString().equals(u.getEmail())){
+                    Toast.makeText(NovoUsuarioActivity.this,
+                            "Já existe um usuário cadastrado com esses dados",
+                            Toast.LENGTH_SHORT).show();
+                }else{
+                    Call<Usuario> callUsuario = service.inserir(u);
 
-                Toast.makeText(NovoUsuarioActivity.this,
-                        "Usuario cadastrado com sucesso",
-                        Toast.LENGTH_SHORT).show();
-                finish();
+                    callUsuario.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            Usuario Usuario = response.body();
+
+                            Toast.makeText(NovoUsuarioActivity.this,
+                                    "Usuario cadastrado com sucesso",
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Log.e(this.getClass().getName(), "ERRO",t);
+                        }
+                    });
+                }
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Log.e(this.getClass().getName(), "ERRO",t);
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                Log.e(NovoUsuarioActivity.class.getName(), "ERRO", t);
             }
         });
+
+
     }
 
 }

@@ -12,7 +12,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.angelelouise.projeto_angele.api.UsuarioService;
 import com.example.angelelouise.projeto_angele.dominio.Usuario;
 
 import java.io.File;
@@ -20,6 +22,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.Serializable;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -33,7 +41,9 @@ public class EditActivity extends Activity{
     private TextView descricao;
     private TextView nome;
     private ImageView perfil;
+    Retrofit retrofit;
     private Bitmap bitmap;
+    UsuarioService service;
     protected static final int EDITAR_SENHA = 0;
     protected static final int FOTO = 1;
     @Override
@@ -55,6 +65,12 @@ public class EditActivity extends Activity{
         nome.setText(usuario_principal.getNome());
 
         setImage(perfil);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(NovoUsuarioActivity.baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        service = retrofit.create(UsuarioService.class);
     }
     protected void onSaveInstanceState (Bundle outState ){
         super.onSaveInstanceState(outState);
@@ -78,6 +94,23 @@ public class EditActivity extends Activity{
                         usuario_principal.setEmail(email.getText().toString());
                         usuario_principal.setDescricao(descricao.getText().toString());
 
+                        Call<Usuario> atualizarUsuario = service.atualizar(usuario_principal);
+
+                        atualizarUsuario.enqueue(new Callback<Usuario>() {
+                            @Override
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                Toast.makeText(EditActivity.this,
+                                        "Perfil atualizado com sucesso!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Usuario> call, Throwable t) {
+                                Toast.makeText(EditActivity.this,
+                                        "Ocorreu um problema, tente mais tarde.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
                         final Intent resultado = new Intent();
                         resultado.putExtra(Usuario.USUARIO_INFO, usuario_principal);
                         setResult(RESULT_OK, resultado);
@@ -93,6 +126,42 @@ public class EditActivity extends Activity{
         AlertDialog alert = builder.create();
         alert.show();
 
+    }
+    public void desativar (View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("O perfil será excluído, deseja proseguir?").setCancelable(false)
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Call<Usuario> deletarUsuario = service.remover(usuario_principal.getId());
+
+                        deletarUsuario.enqueue(new Callback<Usuario>() {
+                            @Override
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                Toast.makeText(EditActivity.this,
+                                        "Perfil removido com sucesso!",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(EditActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onFailure(Call<Usuario> call, Throwable t) {
+                                Toast.makeText(EditActivity.this,
+                                        "Ocorreu um problema, tente mais tarde.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void cancelar (View v){

@@ -95,6 +95,18 @@
             android:textColor="#FAFAFA"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"/>
+        <Button
+            android:id="@+id/desativar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#403040"
+            android:textColor="#fafafa"
+            android:onClick="desativar"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textSize="12sp"
+            android:text="Desativar conta"
+            android:layout_gravity="center_horizontal"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class Usuario implements Serializable {
     public static final String USUARIO_INFO = "USUARIO_INFO";
+    private Long id;
     private String login;
     private String senha;
     private String email;
@@ -95,5 +96,13 @@ public class Usuario implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
