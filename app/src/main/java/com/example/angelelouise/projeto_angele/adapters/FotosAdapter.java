@@ -1,4 +1,4 @@
-package com.example.angelelouise.projeto_angele;
+package com.example.angelelouise.projeto_angele.adapters;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -12,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.angelelouise.projeto_angele.R;
 
 import java.util.ArrayList;
 import java.util.List;

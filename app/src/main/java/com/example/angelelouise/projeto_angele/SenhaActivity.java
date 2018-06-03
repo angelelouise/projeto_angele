@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.angelelouise.projeto_angele.dominio.Usuario;
+
 /**
  * Created by AngeleLouise on 01/05/2018.
  * IMPLEMENTAÇÃO INCOMPLETA

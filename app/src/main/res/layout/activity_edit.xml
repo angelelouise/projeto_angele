@@ -119,9 +119,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:background="#403040"
+                android:textColor="#fafafa"
                 android:onClick="cancelar"
-                android:text="Cancelar"
-                android:textColor="#fafafa" />
+                android:text="Cancelar" />
         </RelativeLayout>
 
     </LinearLayout>

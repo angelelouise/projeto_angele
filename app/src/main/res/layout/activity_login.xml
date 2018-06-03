@@ -52,6 +52,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
         android:text="Entrar"
-        android:onClick="logar"/>
+        android:onClick="logar"
+        android:background="#403040"
+        android:textColor="#fafafa"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
+    <Button
+        android:id="@+id/novousuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/in_user"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
+        android:text="cadastre-se"
+        android:onClick="cadastrarUsuario"
+        android:background="#403040"
+        android:textColor="#fafafa"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
 
 </RelativeLayout>

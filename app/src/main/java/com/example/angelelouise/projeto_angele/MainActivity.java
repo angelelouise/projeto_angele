@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +18,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.angelelouise.projeto_angele.RWPerfil;
+
+import com.example.angelelouise.projeto_angele.adapters.FotosAdapter;
+import com.example.angelelouise.projeto_angele.adapters.RWPerfil;
+import com.example.angelelouise.projeto_angele.dominio.Usuario;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -76,7 +78,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bitmap imagemselecionada = canvas.get(i);
 
-                Intent intent = new Intent(MainActivity.this, PreviewCanvas.class);
+                Intent intent = new Intent(MainActivity.this, PreviewCanvasActivity.class);
                 intent.putExtra( "imagem", imagemselecionada);
                 startActivity(intent);
 

@@ -11,7 +11,7 @@ import android.widget.ImageView;
  * Created by AngeleLouise on 05/05/2018.
  */
 
-public class PreviewCanvas extends Activity{
+public class PreviewCanvasActivity extends Activity{
     private Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

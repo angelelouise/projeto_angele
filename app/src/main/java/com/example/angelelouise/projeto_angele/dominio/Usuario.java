@@ -1,8 +1,9 @@
-package com.example.angelelouise.projeto_angele;
+package com.example.angelelouise.projeto_angele.dominio;
 
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by AngeleLouise on 30/04/2018.
@@ -16,13 +17,17 @@ public class Usuario implements Serializable {
     private String nome;
     private String descricao;
     private Bitmap perfil;
+    private Date dataCadastro;
 
-    public Usuario(String login, String senha, String email, String nome) {
+    public Usuario(String login, String senha, String email, String nome, String descricao, Date dataCadastro) {
         this.email= email;
         this.login = login;
         this.senha = senha;
         this.nome = nome;
+        this.descricao=descricao;
+        this.dataCadastro=dataCadastro;
     }
+
 
     @Override
     public String toString() {
@@ -32,6 +37,7 @@ public class Usuario implements Serializable {
                 ", email='" + email + '\'' +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
+                ", dataCadastro='" + dataCadastro + '\'' +
                 '}';
     }
 
@@ -41,6 +47,14 @@ public class Usuario implements Serializable {
 
     public void setPerfil(Bitmap perfil) {
         this.perfil = perfil;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getDescricao() {

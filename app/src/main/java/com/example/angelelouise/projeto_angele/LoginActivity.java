@@ -3,15 +3,14 @@ package com.example.angelelouise.projeto_angele;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.Serializable;
+import com.example.angelelouise.projeto_angele.dominio.Usuario;
 
-import static com.example.angelelouise.projeto_angele.R.drawable.a;
+import java.util.Date;
 
 /**
  * Created by AngeleLouise on 30/04/2018.
@@ -55,9 +54,13 @@ public class LoginActivity extends Activity{
             startActivity(intent);
         }
     }
+    public void cadastrarUsuario (View v){
+        Intent intent = new Intent(LoginActivity.this, NovoUsuarioActivity.class);
+        startActivity(intent);
+    }
 
     private boolean popular_dados(String user, String password){
-        usuario_principal= new Usuario(user, password, "mail@mail.com.br", user);
+        usuario_principal= new Usuario(user, password, "mail@mail.com.br", user, "", new Date());
         usuario_principal.setDescricao(" ");
         return true;
     }

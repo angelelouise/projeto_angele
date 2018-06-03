@@ -1,10 +1,12 @@
-package com.example.angelelouise.projeto_angele;
+package com.example.angelelouise.projeto_angele.adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.widget.ImageView;
+
+import com.example.angelelouise.projeto_angele.R;
 
 import java.io.File;
 import java.io.FileInputStream;
