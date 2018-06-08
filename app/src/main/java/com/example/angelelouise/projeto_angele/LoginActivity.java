@@ -77,7 +77,7 @@ public class LoginActivity extends Activity{
                     }
                 }else{
                     Toast.makeText(LoginActivity.this,
-                            "Senha incorreta",
+                            "Senha ou usuário incorretos",
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -99,7 +99,7 @@ public class LoginActivity extends Activity{
     }
 
     private boolean popular_dados(String user, String password, String email, String nome, Long id){
-        usuario_principal= new Usuario(user, password, email, nome, "", new Date());
+        usuario_principal= new Usuario(user, password, email, nome, "");
         usuario_principal.setId(id);
         return true;
     }

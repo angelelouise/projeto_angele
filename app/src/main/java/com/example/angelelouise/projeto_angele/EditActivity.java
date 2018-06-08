@@ -60,7 +60,7 @@ public class EditActivity extends Activity{
         Intent intent = getIntent();
         usuario_principal = (Usuario) intent.getExtras().get(Usuario.USUARIO_INFO);
 
-        usuario.setText(usuario_principal.getLogin());
+        usuario.setText(usuario_principal.getUser());
         email.setText(usuario_principal.getEmail());
         nome.setText(usuario_principal.getNome());
 
