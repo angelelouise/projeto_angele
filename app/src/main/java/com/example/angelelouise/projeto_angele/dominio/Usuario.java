@@ -12,7 +12,7 @@ import java.util.Date;
 public class Usuario implements Serializable {
     public static final String USUARIO_INFO = "USUARIO_INFO";
     private Long id;
-    private String user;
+    private String usuario;
     private String senha;
     private String email;
     private String nome;
@@ -20,9 +20,9 @@ public class Usuario implements Serializable {
     private Bitmap perfil;
     private Date dataCadastro;
 
-    public Usuario(String user, String senha, String email, String nome, String descricao) {
+    public Usuario(String usuario, String senha, String email, String nome, String descricao) {
         this.email= email;
-        this.user = user;
+        this.usuario = usuario;
         this.senha = senha;
         this.nome = nome;
         this.descricao=descricao;
@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         String saida = "user: %s, senha: %s, nome: %s, email: %s, descricao: %s";
-        return String.format(saida, user, senha, email, nome, descricao);
+        return String.format(saida,usuario , senha, email, nome, descricao);
     }
 
     public Bitmap getPerfil() {
@@ -56,7 +56,7 @@ public class Usuario implements Serializable {
     }
 
     public String getUser() {
-        return user;
+        return usuario;
     }
 
     public String getSenha() {
@@ -71,8 +71,8 @@ public class Usuario implements Serializable {
         return nome;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String usuario) {
+        this.usuario = usuario;
     }
 
     public void setSenha(String senha) {
