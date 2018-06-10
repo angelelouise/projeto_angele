@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -134,11 +135,13 @@ public class EditActivity extends Activity{
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Log.d("Response", usuario_principal.getId().toString());
                         Call<Usuario> deletarUsuario = service.remover(usuario_principal.getId());
 
                         deletarUsuario.enqueue(new Callback<Usuario>() {
                             @Override
                             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                //Log.d("Response", response.body().toString());
                                 Toast.makeText(EditActivity.this,
                                         "Perfil removido com sucesso!",
                                         Toast.LENGTH_SHORT).show();

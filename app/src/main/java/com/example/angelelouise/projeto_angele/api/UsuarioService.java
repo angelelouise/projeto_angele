@@ -6,6 +6,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -40,11 +41,11 @@ public interface UsuarioService {
     })
     Call<Usuario> atualizar(@Body Usuario usuario);
 
-    @DELETE("/usuario")
+    @DELETE("/usuario/{id}")
     @Headers({
             "Accept: application/json"
     })
-    Call<Usuario> remover(@Path("id")Long idUsuario);
+    Call<Usuario> remover(@Path("id")Long id);
 
 
 

@@ -99,8 +99,8 @@ public class LoginActivity extends Activity{
     }
 
     private boolean popular_dados(String user, String password, String email, String nome, Long id){
-        usuario_principal= new Usuario(user, password, email, nome, "");
-        usuario_principal.setId(id);
+        usuario_principal= new Usuario(user, password, email, nome, "",id);
+
         return true;
     }
 }

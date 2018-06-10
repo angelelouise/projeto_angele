@@ -38,7 +38,7 @@ public class NovoUsuarioActivity extends Activity{
 
     public void inserir(View v) throws Exception{
 
-        final Usuario u = new Usuario(usuario.getText().toString(),senha.getText().toString(),email.getText().toString(),nome.getText().toString(), "");
+        final Usuario u = new Usuario(usuario.getText().toString(),senha.getText().toString(),email.getText().toString(),nome.getText().toString(), "", (long) 0);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -62,6 +62,27 @@ public class NovoUsuarioActivity extends Activity{
                         ok=true;
                     }
                 }
+                if(ok){
+                    Call<Usuario> callUsuario = service.inserir(u);
+
+                    callUsuario.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            assert response.body() != null;
+                            Usuario Usuario = response.body();
+
+                            Toast.makeText(NovoUsuarioActivity.this,
+                                    "Usuario cadastrado com sucesso"+ Usuario,
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Log.e(this.getClass().getName(), "ERRO",t);
+                        }
+                    });
+                }
             }
 
             @Override
@@ -70,27 +91,7 @@ public class NovoUsuarioActivity extends Activity{
             }
         });
 
-        if(ok){
-            Call<Usuario> callUsuario = service.inserir(u);
 
-            callUsuario.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    assert response.body() != null;
-                    Usuario Usuario = response.body();
-
-                    Toast.makeText(NovoUsuarioActivity.this,
-                            "Usuario cadastrado com sucesso"+ Usuario,
-                            Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-                    Log.e(this.getClass().getName(), "ERRO",t);
-                }
-            });
-        }
 
 
     }
